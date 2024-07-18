@@ -50,7 +50,7 @@ exports.delete_event = async (req, res) => {
 };
 exports.getuser_events = async (req, res) => {
   try {
-    const events = await Event.find({ host: req.user });
+    const events = await Event.find({ host: req.user }).sort("-createdat");
     res.status(200).json({ status: "success", data: events });
   } catch (e) {
     res.status(500).json({ status: "fail", message: e.message });
@@ -58,7 +58,9 @@ exports.getuser_events = async (req, res) => {
 };
 exports.getall_events = async (req, res) => {
   try {
-    const events = await Event.find({ reviewed: { $ne: false } });
+    const events = await Event.find({ reviewed: { $ne: false } }).sort(
+      "-createdat"
+    );
     res.status(200).json({
       status: "success",
       data: events,

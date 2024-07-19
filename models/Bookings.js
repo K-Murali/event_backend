@@ -30,6 +30,7 @@ const bookingschema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
 bookingschema.index({ event: 1 });
 bookingschema.pre("findById", function (next) {
   this.populate({

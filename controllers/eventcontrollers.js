@@ -1,4 +1,5 @@
 const Event = require("../models/Eventschema");
+const Expense = require("../models/Expenseschema");
 const Book = require("../models/Bookings");
 
 exports.add_event = async (req, res) => {
@@ -39,7 +40,8 @@ exports.edit_event = async (req, res) => {
 exports.delete_event = async (req, res) => {
   try {
     await Event.findByIdAndDelete(req.params.eventid);
-
+    await Expense.deleteMany({ event: req.params.eventid });
+    await Book.deleteMany({ event: req.params.eventid });
     res.status(200).json({
       status: "success",
       message: "Event deleted successfully",

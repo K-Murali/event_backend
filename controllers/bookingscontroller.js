@@ -87,7 +87,7 @@ exports.createBookingCheckout = async (req, res, next) => {
     let newIncome;
     if (income.length != 0) {
       newIncome = await Expense.findOneAndUpdate(
-        { type: "audience" },
+        {$and:[{ type: "audience" },{event: event}]},
         { $inc: { amount: price } },
         { new: true }
       );

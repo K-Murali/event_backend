@@ -90,6 +90,7 @@ exports.getall_events = async (req, res) => {
           $or: [
             { name: { $regex: keyword, $options: "i" } },
             { venue: { $regex: keyword, $options: "i" } },
+            { description: { $regex: keyword, $options: "i" } },
           ],
         },
         querystr,

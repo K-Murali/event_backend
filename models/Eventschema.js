@@ -82,7 +82,8 @@ Eventschema.virtual("bookings", {
   localField: "_id",
   count: true,
 });
-
+Eventschema.index({ name: "text", venue: "text" });
+// Notesschema.index({title:'text',location:'text',tag:'text'})
 const Eventmodel = mongoose.model("event", Eventschema);
 
 module.exports = Eventmodel;

@@ -27,7 +27,7 @@ exports.getnotify = async (req, res) => {
     if (Object.keys(query).length === 0) {
       const bookings = await Book.find({ user: req.user._id });
       const eventIds = bookings.map((booking) => booking.event);
-      notify = await Notify.find({ event: { $in: eventIds } });
+      notify = await Notify.find({ event: { $in: eventIds } }).sort('createdAt');
     } else {
       notify = await Notify.find({ event: req.query.eventid });
     }

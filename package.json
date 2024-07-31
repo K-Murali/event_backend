@@ -15,7 +15,7 @@
   "description": "this is an event manager application ",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "test": "app.js"
   },
   "author": "Muralidhar",
